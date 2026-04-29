@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - YIC</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="header-fixed">
+        <div class="logo">YIC Admin Panel</div>
+        <div class="header-buttons">
+    <a href="admin-profile.html" class="back-btn-header">My Profile</a>
+    <a href="../index.html" class="logout-btn-header">Logout</a>
+</div>
+    </header>
+
+    <main class="container">
+        <section class="welcome-card">
+            <h2>Welcome, Dr. Ahmed Al-sharef</h2>
+            <p>Managing students in Computer Science (SC) Department</p>
+        </section>
+     
+        <div class="card">
+            <h2>Filter Students</h2>
+            <div class="filter-form">
+                <select>
+                    <option>All Levels</option>
+                    <option>Level 1</option>
+                    <option>Level 2</option>
+                    <option>Level 3</option>
+                    <option>Level 4</option>
+                </select>
+                <input type="text" placeholder="Search by Student ID">
+                <button class="btn-secondary">Filter</button>
+                <button class="btn-secondary">Reset</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Students in SC Department</h2>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Major</th>
+                            <th>Level</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>441500338</td>
+                            <td>Soha Samy Hlway</td>
+                            <td>soha@yic.edu</td>
+                            <td>SC</td>
+                            <td>Level 3</td>
+                            <td><a href="student-detail.html" class="btn-view">View Schedule</a></td>
+                        </tr>
+                        <tr>
+                            <td>441500583</td>
+                            <td>Renad Jaber</td>
+                            <td>renad@yic.edu</td>
+                            <td>SC</td>
+                            <td>Level 3</td>
+                            <td><a href="student-detail.html" class="btn-view">View Schedule</a></td>
+                        </tr>
+                        <tr>
+                            <td>451500001</td>
+                            <td>Ahmed Mansor</td>
+                            <td>ahmed@yic.edu</td>
+                            <td>SC</td>
+                            <td>Level 2</td>
+                            <td><a href="student-detail.html" class="btn-view">View Schedule</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-fixed">
+        <p>&copy; 2026 Yanbu Industrial College - Course Registration System</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

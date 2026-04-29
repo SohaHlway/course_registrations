@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - YIC</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .container-center {
+            padding-top: 100px;
+            padding-bottom: 80px;
+        }
+        .register-card {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-fixed">
+        <div class="logo">YIC Course Registration System</div>
+    </header>
+
+    <main class="container-center">
+        <section class="card register-card">
+            <h1>Create New Account</h1>
+            <p class="subtitle">Register as a new student</p>
+
+            <form id="registerForm" onsubmit="return validateRegister()">
+                <div class="form-group">
+                    <label for="studentId">Student ID:</label>
+                    <input type="text" id="studentId" placeholder="e.g., 441500338" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" placeholder="student@yic.edu" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="major">Major:</label>
+                        <select id="major" required>
+                            <option value="">Select Major</option>
+                            <option value="SC">SC - Computer Science</option>
+                            <option value="SE">SE - Software Engineering</option>
+                            <option value="MIS">MIS - Management Information Systems</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="yearLevel">Year Level:</label>
+                        <select id="yearLevel" required>
+                            <option value="">Select Level</option>
+                            <option value="1">Level 1 - Freshman</option>
+                            <option value="2">Level 2 - Sophomore</option>
+                            <option value="3">Level 3 - Junior</option>
+                            <option value="4">Level 4 - Senior</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" placeholder="Min 6 characters" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password:</label>
+                        <input type="password" id="confirmPassword" placeholder="Re-enter password" required>
+                    </div>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="showPasswordReg"> Show Password
+                    </label>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="terms" required> I agree to the Terms and Conditions
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary">Register</button>
+            </form>
+
+            <div class="login-link">
+                <p>Already have an account? <a href="index.html">Login here</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-fixed">
+        <p>&copy; 2026 Yanbu Industrial College - Course Registration System</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

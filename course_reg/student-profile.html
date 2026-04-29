@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Student</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header-fixed">
+        <div class="logo">My Profile</div>
+        <div class="header-buttons">
+            <a href="student-dashboard.html" class="back-btn-header">Back to Dashboard</a>
+            <a href="index.html" class="logout-btn-header">Logout</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="dashboard-grid">
+    
+            <div class="card">
+                <h2>Personal Information</h2>
+                <div class="profile-info">
+                    <div class="info-row">
+                        <span class="info-label">Student ID:</span>
+                        <span class="info-value">441500338</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Full Name:</span>
+                        <span class="info-value">Soha Samy Hlway</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Email Address:</span>
+                        <span class="info-value">soha@yic.edu</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Major:</span>
+                        <span class="info-value">Computer Science (SC)</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Year Level:</span>
+                        <span class="info-value">Level 3 - Junior</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Total Credits:</span>
+                        <span class="info-value">10 / 18</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Member Since:</span>
+                        <span class="info-value">September 2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Change Password</h2>
+                <form id="changePasswordForm" onsubmit="return changePassword()">
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password:</label>
+                        <input type="password" id="currentPassword" placeholder="Enter current password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password:</label>
+                        <input type="password" id="newPassword" placeholder="Min 6 characters" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmNewPassword">Confirm New Password:</label>
+                        <input type="password" id="confirmNewPassword" placeholder="Re-enter new password" required>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="showPassword"> Show Password
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary">Update Password</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-fixed">
+        <p>&copy; 2026 Yanbu Industrial College - Course Registration System</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

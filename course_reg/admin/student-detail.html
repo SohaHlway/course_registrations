@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Student - Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="header-fixed">
+        <div class="logo">Manage Student Registrations</div>
+        <div class="header-buttons">
+            <span class="admin-info">Admin: Dr. Ahmed Al-sharef (SC)</span>
+            <a href="admin-dashboard.html" class="back-btn-header">Back to Dashboard</a>
+            <a href="../index.html" class="logout-btn-header"> Logout</a>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="welcome-card" id="studentInfoCard">
+            <h2 id="studentName">Soha Samy Hlway</h2>
+            <p id="studentDetails">Student ID: 441500338 | Major: SC | Year Level: 3</p>
+        </section>
+
+        <div class="dashboard-grid">
+
+            <div class="card">
+                <h2>Student's Schedule</h2>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Code</th><th>Course Name</th><th>Credits</th><th>Semester</th><th>Action</th></tr>
+                        </thead>
+                        <tbody id="studentScheduleList"></tbody>
+                    </table>
+                </div>
+                <button class="btn-danger" onclick="adminDropAll()">Drop All Courses</button>
+            </div>
+
+
+            <div class="card">
+                <h2>Available Courses to Add</h2>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Code</th><th>Name</th><th>Credits</th><th>Level</th><th>Prereq</th><th>Action</th></tr>
+                        </thead>
+                        <tbody id="adminAvailableCoursesList"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-fixed">
+        <p>&copy; 2026 Yanbu Industrial College - Course Registration System</p>
+    </footer>
+
+    <script>
+
+        const currentStudent = {
+            student_id: 441500338,
+            student_name: "Soha Samy Hlway",
+            student_email: "soha@yic.edu",
+            student_major: "SC",
+            current_level: 3
+        };
+
+        const allCourses = [
+            { code: "CS101", name: "Computer Programming", credits: 3, level: 1, prerequisite: null },
+            { code: "CS102", name: "Object Oriented Programming", credits: 4, level: 2, prerequisite: "CS101" },
+            { code: "CS103", name: "Algorithms", credits: 3, level: 3, prerequisite: "CS102" },
+            { code: "CS201", name: "Database Systems", credits: 3, level: 3, prerequisite: "CS102" },
+            { code: "CS204", name: "Data Structures", credits: 4, level: 3, prerequisite: "CS102" },
+            { code: "MATH101", name: "Calculus I", credits: 4, level: 1, prerequisite: null },
+            { code: "MATH102", name: "Calculus II", credits: 4, level: 2, prerequisite: "MATH101" },
+            { code: "ENGL101", name: "English Writing", credits: 3, level: 1, prerequisite: null }
+        ];
+
+
+        let studentRegistrations = [
+            { code: "CS101", name: "Computer Programming", credits: 3, semester: "Spring 2026" },
+            { code: "CS102", name: "Object Oriented Programming", credits: 4, semester: "Spring 2026" },
+            { code: "MATH101", name: "Calculus I", credits: 4, semester: "Spring 2026" }
+        ];
+
+   
+        function displayStudentSchedule() {
+            const tbody = document.getElementById('studentScheduleList');
+            if (!tbody) return;
+
+            if (studentRegistrations.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center">No courses registered</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = '';
+            studentRegistrations.forEach(course => {
+                const row = tbody.insertRow();
+                row.insertCell(0).innerHTML = course.code;
+                row.insertCell(1).innerHTML = course.name;
+                row.insertCell(2).innerHTML = course.credits;
+                row.insertCell(3).innerHTML = course.semester;
+                row.insertCell(4).innerHTML = `<button class="btn-drop" onclick="adminDropCourse('${course.code}')">Drop</button>`;
+            });
+        }
+
+     
+        function displayAdminAvailableCourses() {
+            const tbody = document.getElementById('adminAvailableCoursesList');
+            if (!tbody) return;
+
+            const registeredCodes = studentRegistrations.map(c => c.code);
+            const completedCodes = []; 
+
+            let available = allCourses.filter(c => 
+                !registeredCodes.includes(c.code) && 
+                c.level <= currentStudent.current_level
+            );
+
+            available = available.filter(course => {
+                if (!course.prerequisite) return true;
+                return completedCodes.includes(course.prerequisite) || registeredCodes.includes(course.prerequisite);
+            });
+
+            if (available.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">No available courses</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = '';
+            available.forEach(course => {
+                const prereqMet = !course.prerequisite || 
+                    registeredCodes.includes(course.prerequisite) ||
+                    completedCodes.includes(course.prerequisite);
+
+                const row = tbody.insertRow();
+                row.insertCell(0).innerHTML = course.code;
+                row.insertCell(1).innerHTML = course.name;
+                row.insertCell(2).innerHTML = course.credits;
+                row.insertCell(3).innerHTML = `Level ${course.level}`;
+                row.insertCell(4).innerHTML = prereqMet ? 'Met' : `Need: ${course.prerequisite}`;
+                row.insertCell(5).innerHTML = prereqMet ? 
+                    `<button class="btn-register" onclick="adminAddCourse('${course.code}')">Add</button>` : 
+                    '<button class="btn-disabled" disabled>Locked</button>';
+            });
+        }
+
+        function adminAddCourse(courseCode) {
+            const course = allCourses.find(c => c.code === courseCode);
+            if (!course) return;
+
+            if (studentRegistrations.some(c => c.code === courseCode)) {
+                showAlert(`${courseCode} is already registered!`, 'error');
+                return;
+            }
+
+            studentRegistrations.push({
+                code: course.code,
+                name: course.name,
+                credits: course.credits,
+                semester: "Spring 2026"
+            });
+
+            displayStudentSchedule();
+            displayAdminAvailableCourses();
+            showAlert(`${courseCode} added to ${currentStudent.student_name}'s schedule!`, 'success');
+        }
+
+        function adminDropCourse(courseCode) {
+            if (confirm(`Drop ${courseCode} for ${currentStudent.student_name}?`)) {
+                studentRegistrations = studentRegistrations.filter(c => c.code !== courseCode);
+                displayStudentSchedule();
+                displayAdminAvailableCourses();
+                showAlert(`${courseCode} dropped from ${currentStudent.student_name}'s schedule!`, 'success');
+            }
+        }
+
+        function adminDropAll() {
+            if (confirm(`WARNING: Drop ALL courses for ${currentStudent.student_name}?`)) {
+                studentRegistrations = [];
+                displayStudentSchedule();
+                displayAdminAvailableCourses();
+                showAlert(`All courses dropped for ${currentStudent.student_name}!`, 'success');
+            }
+        }
+
+        function showAlert(message, type) {
+            const existingAlert = document.querySelector('.alert-message');
+            if (existingAlert) existingAlert.remove();
+
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `${type} alert-message`;
+            alertDiv.innerHTML = message;
+            alertDiv.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                z-index: 1000;
+                padding: 1rem;
+                border-radius: 8px;
+                animation: slideIn 0.3s ease;
+                background: ${type === 'success' ? '#d4edda' : '#f8d7da'};
+                color: ${type === 'success' ? '#155724' : '#721c24'};
+                border-left: 4px solid ${type === 'success' ? '#28a745' : '#dc3545'};
+            `;
+            document.body.appendChild(alertDiv);
+            setTimeout(() => alertDiv.remove(), 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            displayStudentSchedule();
+            displayAdminAvailableCourses();
+        });
+    </script>
+</body>
+</html>

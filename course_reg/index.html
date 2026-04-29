@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - YIC</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header-fixed">
+        <div class="logo"> YIC Course Registration System</div>
+    </header>
+
+    <main class="container-center">
+        <section class="card login-card">
+            <h1>Welcome Back</h1>
+            <p class="subtitle">Login to access your courses</p>
+
+            <form id="loginForm" onsubmit="return validateLogin()">
+                <div class="form-group">
+                    <label>Select User Type:</label>
+                    <div class="radio-group">
+                        <label class="radio">
+                            <input type="radio" name="userType" value="student" checked>  Student
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="userType" value="admin">  Admin
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="showPassword">  Show Password
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+
+            <div class="register-link">
+                <p>Don't have an account? <a href="register.html">Register here</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-fixed">
+        <p>&copy; 2026 Yanbu Industrial College - Course Registration System</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
