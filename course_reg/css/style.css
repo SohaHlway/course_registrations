@@ -105,19 +105,19 @@ body {
 }
 
 /* ========================================
-   LOGIN & REGISTER CARDS
+   LOGIN CARD
    ======================================== */
-.login-card, .register-card {
+.login-card {
     background: white;
     border-radius: 20px;
     padding: 2rem 3rem;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    max-width: 650px;
+    max-width: 600px;
     width: 100%;
     margin: 0 auto;
 }
 
-.login-card h1, .register-card h1 {
+.login-card h1 {
     text-align: center;
     font-size: 1.8rem;
     color: #1a3c34;
@@ -699,7 +699,7 @@ body {
         padding: 1rem;
     }
     
-    .login-card, .register-card {
+    .login-card {
         padding: 1.5rem;
         max-width: 95%;
     }
@@ -740,7 +740,7 @@ body {
         grid-template-columns: 1fr;
     }
     
-    .login-card h1, .register-card h1 {
+    .login-card h1 {
         font-size: 1.5rem;
     }
     
