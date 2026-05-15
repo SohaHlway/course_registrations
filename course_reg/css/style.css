@@ -9,9 +9,6 @@ body {
     background: #f0f2f5;
 }
 
-/* ========================================
-   HEADER & FOOTER
-   ======================================== */
 .header-fixed {
     background: #1a3c34;
     color: white;
@@ -87,9 +84,6 @@ body {
     font-size: 0.8rem;
 }
 
-/* ========================================
-   CONTAINERS
-   ======================================== */
 .container {
     max-width: 1400px;
     margin: 80px auto 60px auto;
@@ -104,9 +98,6 @@ body {
     padding: 100px 1rem 80px 1rem;
 }
 
-/* ========================================
-   LOGIN CARD
-   ======================================== */
 .login-card {
     background: white;
     border-radius: 20px;
@@ -131,9 +122,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* ========================================
-   WELCOME CARD
-   ======================================== */
 .welcome-card {
     background: linear-gradient(135deg, #1a3c34, #0f2b25);
     color: white;
@@ -149,9 +137,6 @@ body {
     border-bottom: none;
 }
 
-/* ========================================
-   CARDS
-   ======================================== */
 .card {
     background: white;
     border-radius: 16px;
@@ -167,9 +152,6 @@ body {
     padding-bottom: 0.5rem;
 }
 
-/* ========================================
-   FORMS
-   ======================================== */
 .form-group {
     margin-bottom: 1.2rem;
 }
@@ -243,9 +225,6 @@ body {
     flex: 1;
 }
 
-/* ========================================
-   BUTTONS
-   ======================================== */
 .btn-primary {
     background: #1a3c34;
     color: white;
@@ -336,19 +315,6 @@ body {
     display: inline-block;
 }
 
-.btn-disabled {
-    background: #ccc;
-    color: #666;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    cursor: not-allowed;
-}
-
-/* ========================================
-   TABLES
-   ======================================== */
 .table-responsive {
     overflow-x: auto;
     margin: 1rem 0;
@@ -382,9 +348,6 @@ body {
     background: #f5f5f5;
 }
 
-/* ========================================
-   STUDENT DASHBOARD
-   ======================================== */
 .action-buttons-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -428,9 +391,6 @@ body {
     font-size: 1rem;
 }
 
-/* ========================================
-   STUDY PLAN
-   ======================================== */
 .study-legend {
     display: flex;
     gap: 1.5rem;
@@ -500,9 +460,6 @@ body {
     display: inline-block;
 }
 
-/* ========================================
-   STATS & BADGES
-   ======================================== */
 .stats-summary {
     display: flex;
     gap: 1rem;
@@ -524,18 +481,6 @@ body {
     font-size: 1.2rem;
 }
 
-.badge-success {
-    background: #d4edda;
-    color: #155724;
-    padding: 0.2rem 0.6rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    display: inline-block;
-}
-
-/* ========================================
-   ADMIN DASHBOARD
-   ======================================== */
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -557,9 +502,6 @@ body {
     flex: 1;
 }
 
-/* ========================================
-   PROFILE PAGE
-   ======================================== */
 .profile-info {
     display: flex;
     flex-direction: column;
@@ -589,9 +531,6 @@ body {
     width: 60%;
 }
 
-/* ========================================
-   ALERTS
-   ======================================== */
 .alert-error {
     background: #f8d7da;
     color: #721c24;
@@ -608,33 +547,6 @@ body {
     margin-bottom: 20px;
 }
 
-.next-level-badge {
-    background: #d4edda;
-    color: #155724;
-    padding: 8px 12px;
-    border-radius: 8px;
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-.next-level-warning {
-    background: #fff3cd;
-    color: #856404;
-    padding: 8px 12px;
-    border-radius: 8px;
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-.next-level-tag {
-    background: #17a2b8;
-    color: white;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 10px;
-    margin-left: 5px;
-}
-
 .demo-accounts {
     margin-top: 20px;
     padding: 15px;
@@ -648,9 +560,6 @@ body {
     margin: 5px 0;
 }
 
-/* ========================================
-   LINKS
-   ======================================== */
 .register-link, .login-link {
     text-align: center;
     margin-top: 1.5rem;
@@ -664,9 +573,6 @@ body {
     font-weight: bold;
 }
 
-/* ========================================
-   RESPONSIVE
-   ======================================== */
 @media (max-width: 1024px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
